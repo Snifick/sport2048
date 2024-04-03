@@ -4,13 +4,13 @@ import android.webkit.CookieManager
 import android.webkit.WebSettings
 import android.webkit.WebView
 
-fun jiqwhuiqwrihuiquiwruqwr2(qwhuruiqwruiqwriuquhir2: WebView) {
-    qwhuruiqwruiqwriuquhir2.settings.hufiqwru8qwfuqjfjqwif()
+fun setupCookie(view: WebView) {
+    view.settings.setupJsAndOtherSettings()
     CookieManager.getInstance().setAcceptCookie(true)
-    CookieManager.getInstance().setAcceptThirdPartyCookies(qwhuruiqwruiqwriuquhir2, true)
+    CookieManager.getInstance().setAcceptThirdPartyCookies(view, true)
 }
 
-fun WebSettings.hufiqwru8qwfuqjfjqwif() {
+fun WebSettings.setupJsAndOtherSettings() {
     domStorageEnabled = true
     allowContentAccess = true
     allowFileAccess = true

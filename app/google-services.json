@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "668248991498",
+    "project_id": "sport-2048-game",
+    "storage_bucket": "sport-2048-game.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668248991498:android:3fd974b58dfd51e807bcf3",
+        "android_client_info": {
+          "package_name": "game.matchtwo.sportbm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhhsXEpxFETkjDCfMk--6NTaf0Ah7x3QU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

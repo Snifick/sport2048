@@ -7,22 +7,21 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.airbnb.lottie.LottieAnimationView
-import game.matchtwo.sportbm.yespye.codesi.IHUWQriwqir
+import game.matchtwo.sportbm.yespye.codesi.Prefs
 
-class IJuiqwjriqjriwq(private val fijqwrijqwirji: Context,
-                      private val qiwriqwriqwjri: WebView, val riqwjriqwjirji: LottieAnimationView) : WebViewClient() {
+class WebViewClientSuper(private val fijqwrijqwirji: Context,
+                         ) : WebViewClient() {
 
-    private val rhijqwjriqhurqiwrj2 = IHUWQriwqir(fijqwrijqwirji)
+    private val rhijqwjriqhurqiwrj2 = Prefs(fijqwrijqwirji)
 
     override fun onPageFinished(uhqwirqwrji: WebView?, ruqhwrqwjiri: String?) {
         super.onPageFinished(uhqwirqwrji, ruqhwrqwjiri)
         uhqwirqwrji?.visibility = View.VISIBLE
-        riqwjriqwjirji.visibility = View.GONE
-        rhijqwjriqhurqiwrj2.uqwhijrqwrqwrqwij(ruqhwrqwjiri.toString())
+        rhijqwjriqhurqiwrj2.saveUrl(ruqhwrqwjiri.toString())
     }
 
     fun getLastOpenedUrl(ijqwjrijqwirji: String): String? {
-        return rhijqwjriqhurqiwrj2.qhuwriqwrihiqrjji2(ijqwjrijqwirji)
+        return rhijqwjriqhurqiwrj2.getUrl(ijqwjrijqwirji)
     }
 
     override fun shouldOverrideUrlLoading(rjiqwrjwiqr: WebView?, rqwjriqwjri: WebResourceRequest?): Boolean {
